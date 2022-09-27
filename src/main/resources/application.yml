@@ -1,0 +1,30 @@
+server:
+  port: 9595
+
+spring:
+  application:
+    name: demo-spring-boot-on-kubernetes
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+management:
+  server:
+    port: 9596
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+
+---
+spring:
+  profiles:
+    active: docker
